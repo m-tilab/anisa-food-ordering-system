@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/order-service" />
+            <option value="$PROJECT_DIR$/order-service/order-application" />
+            <option value="$PROJECT_DIR$/order-service/order-container" />
+            <option value="$PROJECT_DIR$/order-service/order-dataaccess" />
+            <option value="$PROJECT_DIR$/order-service/order-domain" />
+            <option value="$PROJECT_DIR$/order-service/order-domain/order-application-service" />
+            <option value="$PROJECT_DIR$/order-service/order-domain/order-domain-core" />
+            <option value="$PROJECT_DIR$/order-service/order-messaging" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

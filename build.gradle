@@ -1,0 +1,39 @@
+buildscript {
+    ext {
+        springBootVersion = '3.3.2'
+        springDependencyVersion = '1.1.6'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("io.spring.gradle:dependency-management-plugin:${springDependencyVersion}")
+    }
+}
+
+
+allprojects {
+    group = 'org.example.foodordering'
+    version = '1.0-SNAPSHOT'
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    sourceCompatibility = 21
+
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+}
