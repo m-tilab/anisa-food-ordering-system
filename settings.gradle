@@ -14,4 +14,7 @@ include 'order-service:order-application'
 findProject(':order-service:order-application')?.name = 'order-application'
 include 'order-service:order-container'
 findProject(':order-service:order-container')?.name = 'order-container'
+include 'common'
+include 'common:common-domain'
+findProject(':common:common-domain')?.name = 'common-domain'
 
