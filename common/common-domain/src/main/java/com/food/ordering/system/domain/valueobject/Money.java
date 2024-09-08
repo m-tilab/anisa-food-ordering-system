@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Money {
 
+    public static final Money ZERO = new Money(BigDecimal.ZERO);
     private final BigDecimal amount;
 
     public Money(BigDecimal amount) {
@@ -33,8 +34,8 @@ public class Money {
         return new Money(setScale(this.amount.subtract(amount.getAmount())));
     }
 
-    public Money multiply(Money amount) {
-        return new Money(setScale(this.amount.multiply(amount.getAmount())));
+    public Money multiply(int multiplier) {
+        return new Money(setScale(this.amount.multiply(new BigDecimal(multiplier))));
     }
 
     public BigDecimal setScale(BigDecimal input) {
