@@ -7,13 +7,22 @@ import com.food.ordering.system.service.domain.dto.track.TrackOrderResponse;
 import com.food.ordering.system.service.domain.ports.input.service.OrderApplicationService;
 
 public class OrderApplicationServiceImpl implements OrderApplicationService {
+
+    private final OrderCreateCommandHandler orderCreateCommandHandler;
+    private final OrderTrackCommandHandler orderTrackCommandHandler;
+
+    public OrderApplicationServiceImpl(OrderCreateCommandHandler orderCreateCommandHandler, OrderTrackCommandHandler orderTrackCommandHandler) {
+        this.orderCreateCommandHandler = orderCreateCommandHandler;
+        this.orderTrackCommandHandler = orderTrackCommandHandler;
+    }
+
     @Override
     public CreateOrderResponse createOrder(CreateOrderCommand createOrderCommand) {
-        return null;
+        return orderCreateCommandHandler.createOrder(createOrderCommand);
     }
 
     @Override
     public TrackOrderResponse trackOrder(TrackOrderQuery trackOrderQuery) {
-        return null;
+        return orderTrackCommandHandler.trackOrder(trackOrderQuery);
     }
 }
