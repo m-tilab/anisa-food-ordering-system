@@ -4,6 +4,7 @@ import com.food.ordering.system.order.service.domain.OrderDomainService;
 import com.food.ordering.system.order.service.domain.entity.Customer;
 import com.food.ordering.system.order.service.domain.entity.Order;
 import com.food.ordering.system.order.service.domain.entity.Restaurant;
+import com.food.ordering.system.order.service.domain.event.OrderCreatedEvent;
 import com.food.ordering.system.order.service.domain.exception.OrderDomainException;
 import com.food.ordering.system.service.domain.dto.create.CreateOrderCommand;
 import com.food.ordering.system.service.domain.dto.create.CreateOrderResponse;
@@ -42,9 +43,25 @@ public class OrderCreateCommandHandler {
         checkCustomer(createOrderCommand.getCustomerId());
         Restaurant restaurant = checkRestaurant(createOrderCommand);
         Order order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
-        // orderDomainService.validateAndInitiateOrder(order)
-        // @TODO need to be completed
-        return null;
+        final OrderCreatedEvent orderCreatedEvent = orderDomainService.validateAndInitiateOrder(order, restaurant);
+
+        Order savedOrder = saveOrder(order);
+        log.info("Order created with id: {}", savedOrder.getId().getValue());
+
+        return orderDataMapper.orderToCreateOrderResponse(savedOrder);
+    }
+
+    private Order saveOrder(Order order) {
+
+        final Order orderResult = orderRepository.save(order);
+        if (orderResult == null) {
+
+            log.error("Could not save order: {}", order);
+            throw new OrderDomainException("Could not save order");
+        }
+
+        log.info("Order is saved with id {}", order.getId().getValue());
+        return orderResult;
     }
 
     private Restaurant checkRestaurant(CreateOrderCommand createOrderCommand) {

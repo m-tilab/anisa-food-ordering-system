@@ -10,6 +10,7 @@ import com.food.ordering.system.order.service.domain.entity.Product;
 import com.food.ordering.system.order.service.domain.entity.Restaurant;
 import com.food.ordering.system.order.service.domain.valueobject.StreetAddress;
 import com.food.ordering.system.service.domain.dto.create.CreateOrderCommand;
+import com.food.ordering.system.service.domain.dto.create.CreateOrderResponse;
 import com.food.ordering.system.service.domain.dto.create.OrderAddress;
 import org.springframework.stereotype.Component;
 
@@ -56,5 +57,13 @@ public class OrderDataMapper {
                 orderAddress.getPostalCode(),
                 orderAddress.getCity()
         );
+    }
+
+    public CreateOrderResponse orderToCreateOrderResponse(Order order) {
+
+        return CreateOrderResponse.builder()
+                .orderTrackingId(order.getTrackingId().getValue())
+                .orderStatus(order.getOrderStatus())
+                .build();
     }
 }
