@@ -15,6 +15,10 @@ dependencies {
     implementation project(':common:common-domain')
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework:spring-tx'
+
+    testImplementation('org.mockito:mockito-core')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 }

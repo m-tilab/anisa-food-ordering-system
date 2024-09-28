@@ -42,7 +42,9 @@ public class OrderCreateHelper {
         Order order = orderDataMapper.createOrderCommandToOrder(createOrderCommand);
         final OrderCreatedEvent orderCreatedEvent = orderDomainService.validateAndInitiateOrder(order, restaurant);
 
-        log.info("Order created event with id: {}", orderCreatedEvent.getOrder().getId().getValue());
+        final Order savedOrder = saveOrder(order);
+
+        log.info("Order created event with id: {}", savedOrder.getId().getValue());
         return orderCreatedEvent;
     }
 
@@ -67,5 +69,18 @@ public class OrderCreateHelper {
             log.warn("Could not find customer with id {}", customerId);
             throw new OrderDomainException("Could not find customer with id " + customerId);
         }
+    }
+
+    private Order saveOrder(Order order) {
+
+        final Order orderResult = orderRepository.save(order);
+        if (orderResult == null) {
+
+            log.error("Could not save order: {}", order);
+            throw new OrderDomainException("Could not save order");
+        }
+
+        log.info("Order is saved with id {}", order.getId().getValue());
+        return orderResult;
     }
 }
