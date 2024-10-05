@@ -5,12 +5,19 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="" />
+        <option name="gradleJvm" value="corretto-21" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/common" />
             <option value="$PROJECT_DIR$/common/common-domain" />
+            <option value="$PROJECT_DIR$/infrascructure" />
+            <option value="$PROJECT_DIR$/infrastructure" />
+            <option value="$PROJECT_DIR$/infrastructure/kafka" />
+            <option value="$PROJECT_DIR$/infrastructure/kafka/kafka-config-data" />
+            <option value="$PROJECT_DIR$/infrastructure/kafka/kafka-consumer" />
+            <option value="$PROJECT_DIR$/infrastructure/kafka/kafka-model" />
+            <option value="$PROJECT_DIR$/infrastructure/kafka/kafka-producer" />
             <option value="$PROJECT_DIR$/order-service" />
             <option value="$PROJECT_DIR$/order-service/order-application" />
             <option value="$PROJECT_DIR$/order-service/order-container" />

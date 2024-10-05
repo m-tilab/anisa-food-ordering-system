@@ -1,7 +1,5 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.3.3'
-    id 'io.spring.dependency-management' version '1.1.6'
 }
 
 group = 'com.example'
@@ -18,11 +16,6 @@ configurations {
 }
 
 dependencies {
-    implementation project(':common:common-application')
-    implementation project(':common:common-domain')
-    implementation project(':order-service:order-domain:order-domain-core')
-    implementation project(':order-service:order-domain:order-application-service')
-
     implementation('org.springframework.boot:spring-boot-starter-web:3.3.3')
     implementation('org.springframework.boot:spring-boot-starter-validation:3.3.3')
 
@@ -35,12 +28,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-bootJar {
-    enabled = false
-}
-
-jar {
-    enabled = true
 }

@@ -1,3 +1,10 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
 rootProject.name = 'food-ordering-system'
 include 'order-service'
 include 'order-service:order-domain'
@@ -19,4 +26,16 @@ include 'common:common-domain'
 findProject(':common:common-domain')?.name = 'common-domain'
 include 'infrascructure'
 include 'infrastructure'
+include 'infrastructure:kafka'
+findProject(':infrastructure:kafka')?.name = 'kafka'
+include 'infrastructure:kafka:kafka-config-data'
+findProject(':infrastructure:kafka:kafka-config-data')?.name = 'kafka-config-data'
+include 'infrastructure:kafka:kafka-model'
+findProject(':infrastructure:kafka:kafka-model')?.name = 'kafka-model'
+include 'infrastructure:kafka:kafka-consumer'
+findProject(':infrastructure:kafka:kafka-consumer')?.name = 'kafka-consumer'
+include 'infrastructure:kafka:kafka-producer'
+findProject(':infrastructure:kafka:kafka-producer')?.name = 'kafka-producer'
+include 'common:common-application'
+findProject(':common:common-application')?.name = 'common-application'
 
