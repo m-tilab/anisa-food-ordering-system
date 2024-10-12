@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface RestaurantRepository {
 
-    Optional<Restaurant> findRestaurant(UUID restaurantId);
+    Optional<Restaurant> findRestaurant(Restaurant restaurant);
 }

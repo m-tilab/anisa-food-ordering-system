@@ -51,7 +51,7 @@ public class OrderCreateHelper {
     private Restaurant checkRestaurant(CreateOrderCommand createOrderCommand) {
         final Restaurant restaurant = orderDataMapper.createOrderCommandToRestaurant(createOrderCommand);
 
-        final Optional<Restaurant> restaurantInformation = restaurantRepository.findRestaurant(restaurant.getId().getValue());
+        final Optional<Restaurant> restaurantInformation = restaurantRepository.findRestaurant(restaurant);
 
         if ( restaurantInformation.isEmpty() ) {
             log.warn("Could not find restaurant with id {}", createOrderCommand.getRestaurantId());

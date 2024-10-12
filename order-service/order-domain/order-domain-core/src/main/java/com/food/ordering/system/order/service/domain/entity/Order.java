@@ -16,6 +16,8 @@ import java.util.UUID;
 
 public class Order extends AggregateRoot<OrderId> {
 
+    public static final String FAILURE_MESSAGE_DELIMITER = ", ";
+
     private final CustomerId customerId;
     private final RestaurantId restaurantId;
     private final StreetAddress deliveryAddress;
@@ -35,7 +37,7 @@ public class Order extends AggregateRoot<OrderId> {
         items = builder.items;
         trackingId = builder.trackingId;
         orderStatus = builder.orderStatus;
-        failureMessages = builder.FailureMessages;
+        failureMessages = builder.failureMessages;
     }
 
     public static Builder builder() {
@@ -191,7 +193,7 @@ public class Order extends AggregateRoot<OrderId> {
         private List<OrderItem> items;
         private TrackingId trackingId;
         private OrderStatus orderStatus;
-        private List<String> FailureMessages;
+        private List<String> failureMessages;
 
         private Builder() {
         }
@@ -236,8 +238,8 @@ public class Order extends AggregateRoot<OrderId> {
             return this;
         }
 
-        public Builder FailureMessages(List<String> val) {
-            FailureMessages = val;
+        public Builder failureMessages(List<String> val) {
+            failureMessages = val;
             return this;
         }
 
