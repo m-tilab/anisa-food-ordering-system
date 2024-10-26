@@ -3,22 +3,22 @@ package com.food.ordering.system.domain.valueobject;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Objects;
+import java.util.UUID;
 
 public class Money {
 
-    public static final Money ZERO = new Money(BigDecimal.ZERO);
+    // make amount as immutable
     private final BigDecimal amount;
+
+    public static final Money ZERO = new Money(BigDecimal.ZERO);
 
     public Money(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
     public boolean isGreaterThanZero() {
-
+        // var a = new BigDecimal(0);
+        // System.out.println(a.equals(0));
         return this.amount != null && amount.compareTo(BigDecimal.ZERO) > 0;
     }
 
@@ -38,8 +38,11 @@ public class Money {
         return new Money(setScale(this.amount.multiply(new BigDecimal(multiplier))));
     }
 
-    public BigDecimal setScale(BigDecimal input) {
+    public BigDecimal getAmount() {
+        return amount;
+    }
 
+    private BigDecimal setScale(BigDecimal input) {
         return input.setScale(2, RoundingMode.HALF_EVEN);
     }
 

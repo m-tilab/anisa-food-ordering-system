@@ -17,13 +17,12 @@ import java.util.UUID;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "order_address")
 @Entity
 public class OrderAddressEntity {
-
     @Id
     private UUID id;
 
@@ -40,11 +39,11 @@ public class OrderAddressEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderAddressEntity that = (OrderAddressEntity) o;
-        return Objects.equals(id, that.id);
+        return id.equals(that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id);
     }
 }

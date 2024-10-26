@@ -15,12 +15,10 @@ dependencies {
     implementation project(':common:common-domain')
     implementation 'org.springframework.boot:spring-boot-starter-validation:3.3.3'
     implementation 'org.springframework:spring-tx:6.1.13'
-
-    testImplementation('org.mockito:mockito-core')
-    testImplementation('org.springframework.boot:spring-boot-starter-test')
-
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.mockito:mockito-core')
+    testImplementation('org.springframework.boot:spring-boot-starter-test:3.3.3')
 }
 
 bootJar {

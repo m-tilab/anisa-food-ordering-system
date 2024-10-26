@@ -11,19 +11,19 @@ repositories {
     mavenCentral()
 }
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
-}
-
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
+    // spring kafka
+    // kafka avro serializer
+    // avro
+
+    // kafka-producer
+    // kafka-consumer
+    // kafka-model
+    // kafka-config-data
+
+    implementation("org.springframework.boot:spring-boot-starter:3.3.3")
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
 test {

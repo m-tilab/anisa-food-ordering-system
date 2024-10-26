@@ -26,6 +26,17 @@ public class OrderItem extends BaseEntity<OrderItemId> {
         return new Builder();
     }
 
+    boolean isPriceValid() {
+        return price.isGreaterThanZero() &&
+                price.equals(product.getPrice()) &&
+                price.multiply(quantity).equals(subTotal);
+    }
+
+
+    public OrderId getOrderId() {
+        return orderId;
+    }
+
     public Product getProduct() {
         return product;
     }
@@ -42,17 +53,9 @@ public class OrderItem extends BaseEntity<OrderItemId> {
         return subTotal;
     }
 
-
-    public void initializeOrderItem(OrderId orderId, OrderItemId orderItemId) {
+    void initializeOrderItem(OrderId orderId, OrderItemId orderItemId) {
         this.orderId = orderId;
         super.setId(orderItemId);
-    }
-
-    public boolean isPriceValid() {
-
-        return price.isGreaterThanZero() &&
-                price.equals(product.getPrice()) &&
-                price.multiply(quantity).equals(subTotal);
     }
 
     public static final class Builder {
@@ -66,6 +69,9 @@ public class OrderItem extends BaseEntity<OrderItemId> {
         private Builder() {
         }
 
+        public static Builder builder() {
+            return new Builder();
+        }
 
         public Builder orderItemId(OrderItemId orderItemId) {
             this.orderItemId = orderItemId;

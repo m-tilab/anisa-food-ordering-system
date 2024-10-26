@@ -1,12 +1,11 @@
 package com.food.ordering.system.order.service.domain;
 
-import com.food.ordering.system.order.service.domain.event.OrderPaidEvent;
-import com.food.ordering.system.service.domain.ports.output.publisher.payment.OrderCancelledPaymentRequestMessagePublisher;
-import com.food.ordering.system.service.domain.ports.output.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
-import com.food.ordering.system.service.domain.ports.output.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
-import com.food.ordering.system.service.domain.ports.output.repository.CustomerRepository;
-import com.food.ordering.system.service.domain.ports.output.repository.OrderRepository;
-import com.food.ordering.system.service.domain.ports.output.repository.RestaurantRepository;
+import com.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.OrderCancelledPaymentRequestMessagePublisher;
+import com.food.ordering.system.order.service.domain.ports.output.message.publisher.payment.OrderCreatedPaymentRequestMessagePublisher;
+import com.food.ordering.system.order.service.domain.ports.output.message.publisher.restaurantapproval.OrderPaidRestaurantRequestMessagePublisher;
+import com.food.ordering.system.order.service.domain.ports.output.repository.CustomerRepository;
+import com.food.ordering.system.order.service.domain.ports.output.repository.OrderRepository;
+import com.food.ordering.system.order.service.domain.ports.output.repository.RestaurantRepository;
 import org.mockito.Mockito;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -14,24 +13,26 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication(scanBasePackages = "com.food.ordering.system")
 public class OrderTestConfiguration {
 
+    // Create mock Publisher
     @Bean
-    public OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher() {
+    public OrderCreatedPaymentRequestMessagePublisher orderCreatedPaymentRequestMessagePublisher () {
 
         return Mockito.mock(OrderCreatedPaymentRequestMessagePublisher.class);
     }
 
     @Bean
-    public OrderCancelledPaymentRequestMessagePublisher orderCancelledPaymentRequestMessagePublisher() {
+    public OrderCancelledPaymentRequestMessagePublisher orderCancelledPaymentRequestMessagePublisher () {
 
         return Mockito.mock(OrderCancelledPaymentRequestMessagePublisher.class);
     }
 
     @Bean
-    public OrderPaidRestaurantRequestMessagePublisher orderPaidRestaurantRequestMessagePublisher() {
+    public OrderPaidRestaurantRequestMessagePublisher orderPaidRestaurantRequestMessagePublisher () {
 
         return Mockito.mock(OrderPaidRestaurantRequestMessagePublisher.class);
     }
 
+    // Repositories as a port will implement adapters in other modules
     @Bean
     public RestaurantRepository restaurantRepository() {
         return Mockito.mock(RestaurantRepository.class);
