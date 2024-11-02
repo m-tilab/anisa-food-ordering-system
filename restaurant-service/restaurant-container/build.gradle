@@ -1,0 +1,33 @@
+plugins {
+    id 'org.springframework.boot' version '3.3.3'
+    id 'io.spring.dependency-management' version '1.1.6'
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://packages.confluent.io/maven/'
+    }
+}
+
+dependencies {
+    implementation project(':restaurant-service:restaurant-domain:restaurant-domain-core')
+    implementation project(':restaurant-service:restaurant-domain:restaurant-application-service')
+    implementation project(':restaurant-service:restaurant-dataaccess')
+    implementation project(':restaurant-service:restaurant-messaging')
+
+    implementation("org.springframework.boot:spring-boot-starter:3.3.3")
+    testImplementation('org.springframework.boot:spring-boot-starter-test:3.3.3')
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.3.3")
+
+    implementation("org.postgresql:postgresql:42.7.4")
+}
+
+bootBuildImage {
+    imageName = 'com.food.ordering.system/restaurant.service:1.0'
+}
+
+tasks.build {
+    dependsOn bootBuildImage
+}

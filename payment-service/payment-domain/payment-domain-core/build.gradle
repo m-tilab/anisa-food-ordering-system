@@ -1,0 +1,20 @@
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation project(':common:common-domain')
+
+    // SLF4J API
+    implementation 'org.slf4j:slf4j-api:2.0.16'  // Use the latest version if needed
+
+    // SLF4J Simple Implementation (for basic logging)
+    implementation 'org.slf4j:slf4j-simple:2.0.16'
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+}
