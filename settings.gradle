@@ -68,3 +68,6 @@ include 'restaurant-service:restaurant-domain:restaurant-application-service'
 findProject(':restaurant-service:restaurant-domain:restaurant-application-service')?.name = 'restaurant-application-service'
 include 'restaurant-service:restaurant-messaging'
 findProject(':restaurant-service:restaurant-messaging')?.name = 'restaurant-messaging'
+include 'infrastructure:saga'
+findProject(':infrastructure:saga')?.name = 'saga'
+
