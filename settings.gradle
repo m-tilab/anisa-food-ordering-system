@@ -70,4 +70,6 @@ include 'restaurant-service:restaurant-messaging'
 findProject(':restaurant-service:restaurant-messaging')?.name = 'restaurant-messaging'
 include 'infrastructure:saga'
 findProject(':infrastructure:saga')?.name = 'saga'
+include 'infrastructure:outbox'
+findProject(':infrastructure:outbox')?.name = 'outbox'
 

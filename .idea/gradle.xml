@@ -19,6 +19,8 @@
             <option value="$PROJECT_DIR$/infrastructure/kafka/kafka-consumer" />
             <option value="$PROJECT_DIR$/infrastructure/kafka/kafka-model" />
             <option value="$PROJECT_DIR$/infrastructure/kafka/kafka-producer" />
+            <option value="$PROJECT_DIR$/infrastructure/outbox" />
+            <option value="$PROJECT_DIR$/infrastructure/saga" />
             <option value="$PROJECT_DIR$/order-service" />
             <option value="$PROJECT_DIR$/order-service/order-application" />
             <option value="$PROJECT_DIR$/order-service/order-container" />
