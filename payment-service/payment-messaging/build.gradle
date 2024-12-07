@@ -12,6 +12,7 @@ configurations {
 }
 
 dependencies {
+    implementation project(':infrastructure:outbox')
     implementation project(':common:common-domain')
     implementation project(':infrastructure:kafka:kafka-producer')
     implementation project(':infrastructure:kafka:kafka-consumer')

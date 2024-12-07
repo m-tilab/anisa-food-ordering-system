@@ -5,6 +5,7 @@ configurations {
 }
 
 dependencies {
+    implementation project(':infrastructure:outbox')
     implementation project(':common:common-domain')
     implementation project(':common:common-dataaccess')
     implementation project(':restaurant-service:restaurant-domain:restaurant-application-service')

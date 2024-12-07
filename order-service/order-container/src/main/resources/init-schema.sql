@@ -60,6 +60,7 @@ ALTER TABLE "order".order_address
        ON DELETE CASCADE
               NOT VALID;
 
+
 DROP TYPE IF EXISTS saga_status;
 CREATE TYPE saga_status AS ENUM ('STARTED', 'FAILED', 'SUCCEEDED', 'PROCESSING', 'COMPENSATING', 'COMPENSATED');
 

@@ -5,6 +5,7 @@ configurations {
 }
 
 dependencies {
+    implementation project(':infrastructure:outbox')
     implementation project(':common:common-domain')
     implementation project(':payment-service:payment-domain:payment-application-service')
     implementation project(':payment-service:payment-domain:payment-domain-core')

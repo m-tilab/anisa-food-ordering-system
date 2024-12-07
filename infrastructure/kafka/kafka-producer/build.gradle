@@ -17,6 +17,7 @@ configurations {
 }
 
 dependencies {
+    implementation project(':infrastructure:outbox')
     implementation project(':infrastructure:kafka:kafka-model')
     implementation project(':infrastructure:kafka:kafka-config-data')
     implementation project(':order-service:order-domain:order-domain-core')
