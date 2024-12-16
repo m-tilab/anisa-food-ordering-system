@@ -13,8 +13,8 @@ configurations {
 dependencies {
     implementation project(':common:common-domain')
 
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
     implementation 'org.springframework.boot:spring-boot-starter-validation:3.3.3'
 }
 
