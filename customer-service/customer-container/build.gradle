@@ -1,0 +1,47 @@
+plugins {
+    id 'org.springframework.boot' version '3.3.3'
+    id 'io.spring.dependency-management' version '1.1.6'
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://packages.confluent.io/maven/'
+    }
+}
+
+dependencies {
+    implementation project(':customer-service:customer-domain:customer-domain-core')
+    implementation project(':customer-service:customer-domain:customer-application-service')
+    implementation project(':customer-service:customer-dataaccess')
+    implementation project(':customer-service:customer-messaging')
+    implementation project(':customer-service:customer-application')
+
+    implementation("org.springframework.boot:spring-boot-starter:3.3.3") {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+    implementation("org.springframework.boot:spring-boot-starter-logging:3.3.3")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.3.3")
+
+    implementation("ch.qos.logback:logback-classic")
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+bootBuildImage {
+    imageName = 'com.food.ordering.system/customer.service:1.0'
+}
+
+tasks.build {
+    dependsOn bootBuildImage
+}
+
+test {
+    useJUnitPlatform()
+}

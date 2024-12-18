@@ -1,0 +1,35 @@
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://packages.confluent.io/maven/'
+    }
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation project(':infrastructure:kafka:kafka-model')
+    implementation project(':infrastructure:kafka:kafka-producer')
+    implementation project(':common:common-domain')
+    implementation project(':customer-service:customer-domain:customer-domain-core')
+    implementation project(':customer-service:customer-domain:customer-application-service')
+
+    implementation("org.springframework.boot:spring-boot-starter:3.3.3")
+    implementation 'org.springframework.kafka:spring-kafka:3.2.4'
+    implementation 'org.apache.avro:avro:1.12.0'
+    implementation 'io.confluent:kafka-avro-serializer:7.8.0'
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

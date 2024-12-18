@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation project(':common:common-domain')
+    implementation project(':customer-service:customer-domain:customer-domain-core')
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.3.3'
+    implementation 'org.springframework:spring-tx:6.1.13'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.2'
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

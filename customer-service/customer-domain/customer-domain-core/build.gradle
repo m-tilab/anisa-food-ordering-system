@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+// annotationProcessor is used to process lombok annotations
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation project(':common:common-domain')
+
+    //lombok is used for generating boilerplate code
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    // SLF4J API
+    implementation 'org.slf4j:slf4j-api:2.0.16'  // Use the latest version if needed
+
+    // SLF4J Simple Implementation (for basic logging)
+    implementation 'org.slf4j:slf4j-simple:2.0.16'  // Use the latest version if needed
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}

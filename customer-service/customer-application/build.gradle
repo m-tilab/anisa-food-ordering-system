@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+dependencies {
+    implementation project(':common:common-domain')
+    implementation project(':common:common-application')
+    implementation project(':customer-service:customer-domain:customer-domain-core')
+    implementation project(':customer-service:customer-domain:customer-application-service')
+
+    implementation('org.springframework.boot:spring-boot-starter-web:3.3.3')
+    implementation('org.springframework.boot:spring-boot-starter-validation:3.3.3')
+
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
